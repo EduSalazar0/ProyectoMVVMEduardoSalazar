@@ -9,6 +9,11 @@
 
     <TabBar>
         <ShellContent
+            Title="Pagina Principal"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="{OnPlatform 'mainpage_icon.png'}"/>
+        
+        <ShellContent
         Title="Notas"
         ContentTemplate="{DataTemplate local:AllNotePage}"
         Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
@@ -17,6 +22,8 @@
         Title="Acerca de"
         ContentTemplate="{DataTemplate local:AboutPage}"
         Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
+
+        
     </TabBar>
 
 </Shell>
