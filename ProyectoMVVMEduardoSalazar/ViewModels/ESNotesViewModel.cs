@@ -10,17 +10,17 @@ using ProyectoMVVMEduardoSalazar.Models;
 
 namespace ProyectoMVVMEduardoSalazar.ViewModels
 {
-    internal class NotesViewModel : IQueryAttributable
+    internal class ESNotesViewModel : IQueryAttributable
     {
-        public ObservableCollection<ViewModels.NoteViewModel> AllNotes { get; }
+        public ObservableCollection<ViewModels.ESNoteViewModel> AllNotes { get; }
         public ICommand NewCommand { get; }
         public ICommand SelectNoteCommand { get; }
 
-        public NotesViewModel()
+        public ESNotesViewModel()
         {
-            AllNotes = new ObservableCollection<ViewModels.NoteViewModel>(Models.Note.LoadAll().Select(n => new NoteViewModel(n)));
+            AllNotes = new ObservableCollection<ViewModels.ESNoteViewModel>(Models.Note.LoadAll().Select(n => new ESNoteViewModel(n)));
             NewCommand = new AsyncRelayCommand(NewNoteAsync);
-            SelectNoteCommand = new AsyncRelayCommand<ViewModels.NoteViewModel>(SelectNoteAsync);
+            SelectNoteCommand = new AsyncRelayCommand<ViewModels.ESNoteViewModel>(SelectNoteAsync);
         }
 
         private async Task NewNoteAsync()
@@ -28,7 +28,7 @@ namespace ProyectoMVVMEduardoSalazar.ViewModels
             await Shell.Current.GoToAsync(nameof(Views.NotePage));
         }
 
-        private async Task SelectNoteAsync(ViewModels.NoteViewModel note)
+        private async Task SelectNoteAsync(ViewModels.ESNoteViewModel note)
         {
             if (note != null)
                 await Shell.Current.GoToAsync($"{nameof(Views.NotePage)}?load={note.Identifier}");
@@ -39,7 +39,7 @@ namespace ProyectoMVVMEduardoSalazar.ViewModels
             if (query.ContainsKey("deleted"))
             {
                 string noteId = query["deleted"].ToString();
-                NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
+                ESNoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
 
                 // If note exists, delete it
                 if (matchedNote != null)
@@ -48,7 +48,7 @@ namespace ProyectoMVVMEduardoSalazar.ViewModels
             else if (query.ContainsKey("saved"))
             {
                 string noteId = query["saved"].ToString();
-                NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
+                ESNoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
 
                 // If note is found, update it
                 if (matchedNote != null)
@@ -60,7 +60,7 @@ namespace ProyectoMVVMEduardoSalazar.ViewModels
 
                 // If note isn't found, it's new; add it.
                 else
-                    AllNotes.Add(new NoteViewModel(Note.Load(noteId)));
+                    AllNotes.Add(new ESNoteViewModel(Note.Load(noteId)));
             }
         }
     }

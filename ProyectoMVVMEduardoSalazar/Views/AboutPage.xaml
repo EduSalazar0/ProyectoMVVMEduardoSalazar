@@ -6,7 +6,7 @@
              Title="Eduardo Salazar - About">
     
     <ContentPage.BindingContext>
-        <viewModels:AboutViewModel/>
+        <viewModels:ESAboutViewModel/>
     </ContentPage.BindingContext>
     
     <VerticalStackLayout Spacing="10" Margin="10">

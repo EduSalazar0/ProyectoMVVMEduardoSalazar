@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:ProyectoMVVMEduardoSalazar.ViewModels"
              Title="NotePage">
     <ContentPage.BindingContext>
-        <viewModels:NoteViewModel />
+        <viewModels:ESNoteViewModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Spacing="10" Margin="5">

@@ -7,7 +7,7 @@
              NavigatedTo="ContentPage_NavigatedTo">
     
     <ContentPage.BindingContext>
-        <viewModels:NotesViewModel/>
+        <viewModels:ESNotesViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>

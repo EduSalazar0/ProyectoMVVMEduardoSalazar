@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
 namespace ProyectoMVVMEduardoSalazar.ViewModels
 {
-    internal class NoteViewModel: ObservableObject, IQueryAttributable
+    internal class ESNoteViewModel: ObservableObject, IQueryAttributable
     {
         private Models.Note _note;
 
@@ -37,13 +37,13 @@ namespace ProyectoMVVMEduardoSalazar.ViewModels
         public ICommand DeleteCommand { get; private set; }
         //Los dos constructores se usan para crear el modelo de vista con un nuevo modelo de respaldp
         // que es una nota vacia, o para crear un modelo de vista que usa la instancia de modelo especificada
-        public NoteViewModel()
+        public ESNoteViewModel()
         {
             _note = new Models.Note();
             SaveCommand = new AsyncRelayCommand(Save);
             DeleteCommand = new AsyncRelayCommand(Delete);
         }
-        public NoteViewModel(Models.Note note)
+        public ESNoteViewModel(Models.Note note)
         {
             _note = note;
             SaveCommand = new AsyncRelayCommand(Save);
