@@ -25,17 +25,17 @@ namespace ProyectoMVVMEduardoSalazar.Models
         public void Delete() =>
             File.Delete(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename));
 
-        public static Note Load(String filename)
+        public static Note Load(string filename)
         {
             filename = System.IO.Path.Combine(FileSystem.AppDataDirectory, filename);
 
             if (!File.Exists(filename))
-                throw new FileNotFoundException("Unable to fin file on local storage.", filename);
+                throw new FileNotFoundException("Unable to find file on local storage.", filename);
 
             return
                 new()
                 {
-                    Filename = filename,
+                    Filename = Path.GetFileName(filename),
                     Text = File.ReadAllText(filename),
                     Date = File.GetLastWriteTime(filename)
                 };
